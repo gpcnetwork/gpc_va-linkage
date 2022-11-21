@@ -77,7 +77,7 @@ a) either submit to their site-specific upload buckets via your site-specific su
 
 OR 
 
-b) using `aws s3` commands to upload data to site-specific bucket: 
+b) using `aws s3 ls` or `aws s3 sync` commands to upload data to site-specific bucket: 
 
 | **GPC Site** | **<upload-bucket-name>**  |
 |:------------:|:-------------------------:|
