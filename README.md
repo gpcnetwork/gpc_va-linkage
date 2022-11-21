@@ -17,20 +17,20 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 **Administrative Preparations**
 - As an extension of the BIDS project, a no-cost and no-signature Datavant order form has been officially executed for the linkage work. Sites can download the executed order form for local reference from: [Executed Datavant Order Form](doc/Final%20BIDS%20DaVINCI%20GPC%20Linkage%20Order%20Form_v2%20(002)%20FE.pdf)
 - Non-human subject derermination letters have been obtained from IRBs of both the leading site (University of Utah) and coordination site (University of Missouri)
+
 |Role|Site PI|Site Name|NHS letter|
-|Leading|[Dr.Jacob Kean]()|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
-|Coordinating|[Dr.Xing Song]()|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
+|----|-------|---------|----------|
+|Leading|[Dr.Jacob Kean](https://medicine.utah.edu/faculty/mddetail/u6002766)|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
+|Coordinating|[Dr.Xing Song](https://medicine.missouri.edu/faculty/xing-song-phd)|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
 - GPC DROC request has been submitted
 
-**Step 1: Data Tokenization**
-*Site*
+**Step 1: Data Tokenization** (*at GPC-Site*)
 
 
-**Step 2: Token Submission and Integration**
-*GPC CC*
+**Step 2: Token Submission and Integration** (*at GPC-CC*)
+Upload 
 
-**Step 3: Linkage and Overlap Analysis**
-*VA*
+**Step 3: Linkage and Overlap Analysis** (*at VA*)
 
 
 
