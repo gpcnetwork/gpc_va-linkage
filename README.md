@@ -1,10 +1,8 @@
 # GPC DVINCI Data Linkage Pilot Project
 ## Overview
-As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datavant tokenization of the Veterans Administration (VA) and Department of Defense (DoD) electronic health records to support linkage across PCORnet and the corresponding Governance processes. Leveraging existing inter-network resources and in support of the [brain injury data sharing (BIDS)](doc/GPC_LEC_2022_BIDS-VA-Linkage.pptx) project, we propose a demonstration linkage project between GPC EHR data and DoD/VA EHR data to advance the understanding of treatment, progression and long-term outcomes of traumatic brain injury (TBI) for Servicemembers and Veterans.  
+As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datavant tokenization of the Veterans Administration (VA) and Department of Defense (DoD) electronic health records to support linkage across PCORnet and the corresponding Governance processes. Leveraging existing inter-network resources and in support of the [brain injury data sharing (BIDS)](doc/GPC_LEC_2022_BIDS-VA-Linkage.pptx) project, we propose a demonstration linkage project between GPC EHR data and DoD/VA EHR data to advance the understanding of treatment, progression and long-term outcomes of traumatic brain injury (TBI) for Servicemembers and Veterans.
 
-Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis and federate modeling. Sites are expected to submit hash token tables to GPC CC following the established process of submitting their CDM datamarts onto [GROUSE*](https://github.com/gpcnetwork/GROUSE). 
-
-[^*]:GROUSE gpcnetwork repo is private for security and privacy reasons. 
+Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis and federate modeling. 
 
 ****************************************************************************
 
@@ -34,20 +32,51 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 
 As entailed in the data flow figure above, sites are only required to complete Step 1. For full transparency and document completion, we will describe the entire workflow below: 
 
-**Step 1: Data Tokenization and Submission** (*at GPC-Site*)
-- Step 1.1: 
-- Step 1.2:
-- Step 1.3:
+### Step 1: Data Tokenization and Submission (*at GPC-Site*)
+**Step 1.1 (Tokenization)**
+Assume that sites have all generated the [site-specific token](https://datavant.com/wp-content/uploads/dlm_uploads/2018/09/WhitePaper_-De-Identifying-and-Linking-Structured-Data.pdf) based on the same configuration as PCORnet hash tokens (tokens 1,2,3,4,5,16). Please ensure that these site-specific tokens are not outdated and a **local mapping to CDM PATID submitted to GROUSE** is preserved. 
+
+PCORnet site-specific tokens generated previously can be further converted to `gpc_va` study-specific transit tokens, by running the following command in cooresponding operation system where datavant executable is installed. You will need to specify the following parameter before running the command: 
+- <yoursitedvkey>: is the name key of your site specified in the Datavant portal. Please note that site-specific tokens are not the transit tokens sent to PCORnet. PCORnet transit tokens cannot be converted to `gpc_va` transit tokens.   
+- <credentials> or <credentials.txt> file: is your user-specific credentials, retrieved from the Datavant portal and stored in a plain text file in the required location
+- <yoursitenameabbr>: is your site-specific abbreviation (e.g., 'UMO' for 'University of Missouri', this is in line with PCORnet abbreviations) to separate your hash token file form the others. 
+
+*Windows*
+```bash
+cat credentials.txt | .\Datavant_Win.exe transform-tokens --to gpc_va -s <yoursitedvkey> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
+```
+
+*Mac*
+```bash
+cat credentials | .\Datavant_Mac transform-tokens --to gpc_va -s <yoursite> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
+```
+
+*Linux*
+```bash
+cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
+```
+
+**Step 1.2 (Submission)**
+Participating sites are expected to submit hash token files to GPC CC following the established process of submitting their CDM datamarts onto [GROUSE*](https://github.com/gpcnetwork/GROUSE). Sites can choose to: 
+a) either submit to their site-specific upload buckets via your site-specific submission url: 
+
+OR 
+
+b) using `aws s3` commands to upload data to site-specific bucket: 
+
+
+More technical details can be found from the [GROUSE Instruction Page](). Note that GROUSE gpcnetwork repo is private for security and privacy reasons. Please reach out to 
+
 
 **Step 2: Token Integration and Transfer** (*at GPC-CC*)
-- Step 2.1: 
-- Step 2.2: 
-- Step 2.3: 
+- Step 2.1 (Extraction): 
+- Step 2.2 (Integration): 
+- Step 2.3 (Transfer): 
 
 **Step 3: Linkage and Overlap Analysis** (*at VA*)
-- Step 3.1: 
-- Step 3.2: 
-- Step 3.3: 
+- Step 3.1 (Linkage): 
+- Step 3.2 (Analysis): 
+- Step 3.3 (Retention): 
 
 
 
