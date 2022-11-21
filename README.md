@@ -60,6 +60,7 @@ cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i
 Participating sites are expected to submit hash token files to GPC CC following the established process of submitting their CDM datamarts onto [GROUSE*](https://github.com/gpcnetwork/GROUSE). Sites can choose to: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
+<div align="center">
 | **GPC Site** | **S3 Bucket URL**                                                  |
 |:------------:|:------------------------------------------------------------------:|
 | Allina       | https://s3.console.aws.amazon.com/s3/buckets/gpc-allina-upload/    |
@@ -74,6 +75,7 @@ a) either submit to their site-specific upload buckets via your site-specific su
 | UIOWA        | https://s3.console.aws.amazon.com/s3/buckets/gpc-uiowa-upload/     |
 | UTHouston    | https://s3.console.aws.amazon.com/s3/buckets/gpc-uthouston-upload/ |
 | WashU        | https://s3.console.aws.amazon.com/s3/buckets/gpc-washu-upload/     |
+<\div>
 
 OR 
 
@@ -101,6 +103,7 @@ More technical details can be found from the [GROUSE Instruction Page](https://g
 - Step 2.1 (Extraction): 
 - Step 2.2 (Integration): 
 - Step 2.3 (Transfer): 
+
 
 **Step 3: Linkage and Overlap Analysis** (*at VA*)
 - Step 3.1 (Linkage): 
