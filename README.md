@@ -37,9 +37,9 @@ As entailed in the data flow figure above, sites are only required to complete S
 Assume that sites have all generated the [site-specific token](https://datavant.com/wp-content/uploads/dlm_uploads/2018/09/WhitePaper_-De-Identifying-and-Linking-Structured-Data.pdf) based on the same configuration as PCORnet hash tokens (tokens 1,2,3,4,5,16). Please ensure that these site-specific tokens are not outdated and a **local mapping to CDM PATID submitted to GROUSE** is preserved. 
 
 PCORnet site-specific tokens generated previously can be further converted to `gpc_va` study-specific transit tokens, by running the following command in cooresponding operation system where datavant executable is installed. You will need to specify the following parameter before running the command: 
-- <yoursitedvkey>: is the name key of your site specified in the Datavant portal. Please note that site-specific tokens are not the transit tokens sent to PCORnet. PCORnet transit tokens cannot be converted to `gpc_va` transit tokens.   
-- <credentials> or <credentials.txt> file: is your user-specific credentials, retrieved from the Datavant portal and stored in a plain text file in the required location
-- <yoursitenameabbr>: is your site-specific abbreviation (e.g., 'UMO' for 'University of Missouri', this is in line with PCORnet abbreviations) to separate your hash token file form the others. 
+- \<yoursitedvkey\>: is the name key of your site specified in the Datavant portal. Please note that site-specific tokens are not the transit tokens sent to PCORnet. PCORnet transit tokens cannot be converted to `gpc_va` transit tokens.   
+- \<credentials\> or \<credentials.txt\> file: is your user-specific credentials, retrieved from the Datavant portal and stored in a plain text file in the required location
+- \<yoursitenameabbr\>: is your site-specific abbreviation (e.g., 'UMO' for 'University of Missouri', this is in line with PCORnet abbreviations) to separate your hash token file form the others. 
 
 *Windows*
 ```bash
