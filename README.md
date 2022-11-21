@@ -20,8 +20,8 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 
 |Role|Site PI|Site Name|NHS letter|
 |:--:|:-----:|:-------:|:--------:|
-|Leading|[Dr.Jacob Kean](https://medicine.utah.edu/faculty/mddetail/u6002766)|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
-|Coordinating|[Dr.Xing Song](https://medicine.missouri.edu/faculty/xing-song-phd)|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
+|Leading site|[Dr.Jacob Kean](https://medicine.utah.edu/faculty/mddetail/u6002766)|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
+|Coordinating site|[Dr.Xing Song](https://medicine.missouri.edu/faculty/xing-song-phd)|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
 - A GPC DROC request has been submitted: [DROC Request Submission](doc/GPCDROCOversightRequest_GPCDRO_2022-11-21_1051.pdf)
 
 ************************************************************************
