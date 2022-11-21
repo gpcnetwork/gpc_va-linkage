@@ -60,12 +60,41 @@ cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i
 Participating sites are expected to submit hash token files to GPC CC following the established process of submitting their CDM datamarts onto [GROUSE*](https://github.com/gpcnetwork/GROUSE). Sites can choose to: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
+| **GPC Site** | **S3 Bucket URL**                                                  |
+|--------------|--------------------------------------------------------------------|
+| Allina       | https://s3.console.aws.amazon.com/s3/buckets/gpc-allina-upload/    |
+| IHC          | https://s3.console.aws.amazon.com/s3/buckets/gpc-ihc-upload/       |
+| KUMC         | https://s3.console.aws.amazon.com/s3/buckets/gpc-kumc-upload/      |
+| MCRI         | https://s3.console.aws.amazon.com/s3/buckets/gpc-mcri-upload/      |
+| MCW          | https://s3.console.aws.amazon.com/s3/buckets/gpc-mcw-upload/       |
+| UTHSCSA      | https://s3.console.aws.amazon.com/s3/buckets/gpc-uthscsa-upload/   |
+| UTSW         | https://s3.console.aws.amazon.com/s3/buckets/gpc-utsw-upload/      |
+| UNMC         | https://s3.console.aws.amazon.com/s3/buckets/gpc-unmc-upload/      |
+| UU           | https://s3.console.aws.amazon.com/s3/buckets/gpc-uu-upload/        |
+| UIOWA        | https://s3.console.aws.amazon.com/s3/buckets/gpc-uiowa-upload/     |
+| UTHouston    | https://s3.console.aws.amazon.com/s3/buckets/gpc-uthouston-upload/ |
+| WashU        | https://s3.console.aws.amazon.com/s3/buckets/gpc-washu-upload/     |
+
 OR 
 
 b) using `aws s3` commands to upload data to site-specific bucket: 
 
+| **GPC Site** | **<upload-bucket-name>**  |
+|--------------|---------------------------|
+| Allina       | `gpc-allina-upload`       |
+| IHC          | `gpc-ihc-upload`          |
+| KUMC         | `gpc-kumc-upload`         |
+| MCRI         | `gpc-mcri-upload`         |
+| MCW          | `gpc-mcw-upload`          |
+| UTHSCSA      | `gpc-uthscsa-upload`      |
+| UTSW         | `gpc-utsw-upload`         |
+| UNMC         | `gpc-unmc-upload`         |
+| UU           | `gpc-uu-upload`           |
+| UIOWA        | `gpc-uiowa-upload`        |
+| UTHouston    | `gpc-uthouston-upload`    |
+| WashU        | `gpc-washu-upload`        |
 
-More technical details can be found from the [GROUSE Instruction Page](). Note that GROUSE gpcnetwork repo is private for security and privacy reasons. Please reach out to 
+More technical details can be found from the [GROUSE Instruction Page](https://github.com/gpcnetwork/GROUSE#readme). Note that GROUSE gpcnetwork repo is private for security and privacy reasons. If you can't access the GROUSE gpcnetwork repo, please reach out to ask-umbmi@umsystem.edu or create an issue at https://github.com/gpcnetwork/gpc-va-linkage/issues 
 
 
 **Step 2: Token Integration and Transfer** (*at GPC-CC*)
@@ -77,7 +106,6 @@ More technical details can be found from the [GROUSE Instruction Page](). Note t
 - Step 3.1 (Linkage): 
 - Step 3.2 (Analysis): 
 - Step 3.3 (Retention): 
-
 
 
 ************************************************************************
