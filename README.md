@@ -19,10 +19,12 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 - Non-human subject derermination letters have been obtained from IRBs of both the leading site (University of Utah) and coordination site (University of Missouri)
 |Role|Site PI|Site Name|NHS letter|
 |Leading|[Dr.Jacob Kean]()|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
-|Coordinating|[Dr.Xing Song]()|University of Missouri|[NHS-Song-MU]()|
+|Coordinating|[Dr.Xing Song]()|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
+- GPC DROC request has been submitted
 
 **Step 1: Data Tokenization**
 *Site*
+
 
 **Step 2: Token Submission and Integration**
 *GPC CC*
