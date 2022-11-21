@@ -107,7 +107,7 @@ to-do
 #### Step 2.3 (Transfer)
 to-do
 
-### Step 3: Linkage and Overlap Analysis** (*at VA*)
+### Step 3: Linkage and Overlap Analysis (*at VA*)
 #### Step 3.1 (Linkage)
 to-do
 
