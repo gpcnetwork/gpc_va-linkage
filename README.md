@@ -19,7 +19,7 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 - Non-human subject derermination letters have been obtained from IRBs of both the leading site (University of Utah) and coordination site (University of Missouri)
 
 |Role|Site PI|Site Name|NHS letter|
-|----|-------|---------|----------|
+|:--:|:-----:|:-------:|:--------:|
 |Leading|[Dr.Jacob Kean](https://medicine.utah.edu/faculty/mddetail/u6002766)|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
 |Coordinating|[Dr.Xing Song](https://medicine.missouri.edu/faculty/xing-song-phd)|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
 - A GPC DROC request has been submitted: [DROC Request Submission](doc/GPCDROCOversightRequest_GPCDRO_2022-11-21_1051.pdf)
@@ -61,7 +61,7 @@ Participating sites are expected to submit hash token files to GPC CC following 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
 | **GPC Site** | **S3 Bucket URL**                                                  |
-|--------------|--------------------------------------------------------------------|
+|:------------:|:------------------------------------------------------------------:|
 | Allina       | https://s3.console.aws.amazon.com/s3/buckets/gpc-allina-upload/    |
 | IHC          | https://s3.console.aws.amazon.com/s3/buckets/gpc-ihc-upload/       |
 | KUMC         | https://s3.console.aws.amazon.com/s3/buckets/gpc-kumc-upload/      |
@@ -80,7 +80,7 @@ OR
 b) using `aws s3` commands to upload data to site-specific bucket: 
 
 | **GPC Site** | **<upload-bucket-name>**  |
-|--------------|---------------------------|
+|:------------:|:-------------------------:|
 | Allina       | `gpc-allina-upload`       |
 | IHC          | `gpc-ihc-upload`          |
 | KUMC         | `gpc-kumc-upload`         |
