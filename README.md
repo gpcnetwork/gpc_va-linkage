@@ -33,7 +33,7 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 As entailed in the data flow figure above, sites are only required to complete Step 1. For full transparency and document completion, we will describe the entire workflow below: 
 
 ### Step 1: Data Tokenization and Submission (*at GPC-Site*)
-**Step 1.1 (Tokenization)**
+#### Step 1.1 (Tokenization)         
 Assume that sites have all generated the [site-specific token](https://datavant.com/wp-content/uploads/dlm_uploads/2018/09/WhitePaper_-De-Identifying-and-Linking-Structured-Data.pdf) based on the same configuration as PCORnet hash tokens (tokens 1,2,3,4,5,16). Please ensure that these site-specific tokens are not outdated and a **local mapping to CDM PATID submitted to GROUSE** is preserved. 
 
 PCORnet site-specific tokens generated previously can be further converted to `gpc_va` study-specific transit tokens, by running the following command in cooresponding operation system where datavant executable is installed. You will need to specify the following parameter before running the command: 
@@ -56,7 +56,7 @@ cat credentials | .\Datavant_Mac transform-tokens --to gpc_va -s <yoursite> -i t
 cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
 ```
 
-**Step 1.2 (Submission)**
+#### Step 1.2 (Submission)       
 Participating sites are expected to submit hash token files to GPC CC following the established process of submitting their CDM datamarts onto [GROUSE*](https://github.com/gpcnetwork/GROUSE). Sites can choose to: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
@@ -97,16 +97,16 @@ b) using `aws s3 ls` or `aws s3 sync` commands to upload data to site-specific b
 More technical details can be found from the [GROUSE Instruction Page](https://github.com/gpcnetwork/GROUSE#readme). Note that GROUSE gpcnetwork repo is private for security and privacy reasons. If you can't access the GROUSE gpcnetwork repo, please reach out to ask-umbmi@umsystem.edu or create an issue at https://github.com/gpcnetwork/gpc-va-linkage/issues 
 
 
-**Step 2: Token Integration and Transfer** (*at GPC-CC*)
-- Step 2.1 (Extraction): 
-- Step 2.2 (Integration): 
-- Step 2.3 (Transfer): 
+### Step 2: Token Integration and Transfer (*at GPC-CC*)
+#### Step 2.1 (Extraction): 
+#### Step 2.2 (Integration): 
+#### Step 2.3 (Transfer): 
 
 
-**Step 3: Linkage and Overlap Analysis** (*at VA*)
-- Step 3.1 (Linkage): 
-- Step 3.2 (Analysis): 
-- Step 3.3 (Retention): 
+#### Step 3: Linkage and Overlap Analysis** (*at VA*)
+#### Step 3.1 (Linkage): 
+#### Step 3.2 (Analysis): 
+#### Step 3.3 (Retention): 
 
 
 ************************************************************************
