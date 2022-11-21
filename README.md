@@ -98,16 +98,24 @@ More technical details can be found from the [GROUSE Instruction Page](https://g
 
 
 ### Step 2: Token Integration and Transfer (*at GPC-CC*)
-#### Step 2.1 (Extraction): 
-#### Step 2.2 (Integration): 
-#### Step 2.3 (Transfer): 
+#### Step 2.1 (Extraction)
+to-do
 
+#### Step 2.2 (Integration)
+to-do
 
-#### Step 3: Linkage and Overlap Analysis** (*at VA*)
-#### Step 3.1 (Linkage): 
-#### Step 3.2 (Analysis): 
-#### Step 3.3 (Retention): 
+#### Step 2.3 (Transfer)
+to-do
 
+### Step 3: Linkage and Overlap Analysis** (*at VA*)
+#### Step 3.1 (Linkage)
+to-do
+
+#### Step 3.2 (Analysis)
+to-do
+
+#### Step 3.3 (Retention)
+to-do
 
 ************************************************************************
 *Copyright (c) 2022 The Curators of University of Missouri*</br>
