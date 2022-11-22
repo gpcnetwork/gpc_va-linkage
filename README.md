@@ -103,7 +103,7 @@ More technical details can be found from the [GROUSE Instruction Page](https://g
 
 ### Step 2: Token Integration and Transfer (*at GPC-CC*)        
 #### Step 2.1 (Integration)     
-GPC CC will extract all `tokenization_output_<yoursitenameabbr>.csv` files, add de-identified site ID and integrate as one single tokenization file before sending over to VA for crosswalk generation. 
+GPC CC will extract all `tokenization_output_<yoursitenameabbr>.csv` files, add de-identified site ID and integrate as one single tokenization file before sending over to VA linkage team for crosswalk generation. 
 
 #### Step 2.2 (Transfer)        
 GPC CC will submit the integrated hash token file via secure file transfer to VA linkage hub team (VA Team 2). 
