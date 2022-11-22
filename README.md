@@ -57,10 +57,10 @@ cat credentials | .\Datavant_Mac transform-tokens --to gpc_va -s <yoursite> -i t
 cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
 ```
 
-#### Step 1.2 (GROUSE linkage preservation)
+#### Step 1.2 (GROUSE linkage preservation)     
 Participating sites are expected to also attach either the PATID or HASHID to the `tokenization_output_<yoursitenameabbr>.csv` file, so that the hash token file can be linkable to the CDM data submitted to GROUSE. This will allow GPC CC to perform overlap analysis to generate useful statistics on GPC-VA-DoD crosswalk population, which can be used for potential GPC-VA-DoD collaborative grant proposals in the future. 
 
-#### Step 1.3 (Submission)       
+#### Step 1.3 (Submission)          
 Participating sites are expected to submit hash token files to GPC CC following the established process for[GROUSE*](https://github.com/gpcnetwork/GROUSE) submission using TLS/SSL secure protocol. Sites can choose to: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
@@ -101,18 +101,18 @@ b) using `aws s3 ls` or `aws s3 sync` commands to upload data to site-specific b
 More technical details can be found from the [GROUSE Instruction Page](https://github.com/gpcnetwork/GROUSE#readme). Note that GROUSE gpcnetwork repo is private for security and privacy reasons. If you can't access the GROUSE gpcnetwork repo, please reach out to ask-umbmi@umsystem.edu or create an issue at https://github.com/gpcnetwork/gpc-va-linkage/issues 
 
 
-### Step 2: Token Integration and Transfer (*at GPC-CC*)
-#### Step 2.1 (Integration)
+### Step 2: Token Integration and Transfer (*at GPC-CC*)        
+#### Step 2.1 (Integration)     
 GPC CC will extract all `tokenization_output_<yoursitenameabbr>.csv` files, add de-identified site ID and integrate as one single tokenization file before sending over to VA for crosswalk generation. 
 
-#### Step 2.2 (Transfer)
+#### Step 2.2 (Transfer)        
 GPC CC will submit the integrated hash token file via secure file transfer to VA linkage hub team (VA Team 2). 
 
-### Step 3: Linkage and Overlap Analysis (*at VA*)
-#### Step 3.1 (Linkage)
+### Step 3: Linkage and Overlap Analysis (*at VA*)      
+#### Step 3.1 (Linkage)         
 VA tokenization team (VA Team 1) will perform data tokenization on DaVINCI data using study-specific key `gov_va_lhb_gpc` and submit the VA hash tokens to VA linkage hub team (VA Team 2) for crosswalk generation. VA Team 2 will then send the matched patient IDs back to GPC CC. 
 
-#### Step 3.2 (Analysis)
+#### Step 3.2 (Analysis)        
 VA team and GPC CC will perform overlap analysis and disseminate results back to sites. The analysis results can be used as preliminary data to support future grant proposals.  
 
 
