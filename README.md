@@ -1,6 +1,6 @@
 # GPC DVINCI Data Linkage Pilot Project
 ## Overview
-As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datavant tokenization of the Veterans Administration (VA) and Department of Defense (DoD) electronic health records to support linkage across PCORnet and the corresponding Governance processes. Leveraging existing inter-network resources and in support of the [brain injury data sharing (BIDS)](doc/GPC_LEC_2022_BIDS-VA-Linkage.pptx) project, we propose a demonstration linkage project between GPC EHR data and DoD/VA EHR data to advance the understanding of treatment, progression and long-term outcomes of traumatic brain injury (TBI) for Servicemembers and Veterans.
+As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datavant tokenization of the Veterans Administration (VA) and Department of Defense (DoD) electronic health records to support linkage across PCORnet and the corresponding Governance processes. Leveraging existing inter-network resources and in support of the [brain injury data sharing (BIDS)](doc/GPC_LEC_2022_BIDS-VA-Linkage.pptx) project, we propose a demonstration linkage project between GPC EHR data and DoD/VA EHR data (i.e., the DaVINCI database) to advance the understanding of treatment, progression and long-term outcomes of traumatic brain injury (TBI) for Servicemembers and Veterans.
 
 Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis and federate modeling. 
 
@@ -22,6 +22,7 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 |---------|-------|---------|----------|
 |Leading site|[Dr.Jacob Kean](https://medicine.utah.edu/faculty/mddetail/u6002766)|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
 |Coordinating site|[Dr.Xing Song](https://medicine.missouri.edu/faculty/xing-song-phd)|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
+
 - A GPC DROC request has been submitted: [DROC Request Submission](doc/GPCDROCOversightRequest_GPCDRO_2022-11-21_1051.pdf)
 
 ************************************************************************
@@ -39,7 +40,7 @@ Assume that sites have all generated the [site-specific token](https://datavant.
 PCORnet site-specific tokens generated previously can be further converted to `gpc_va` study-specific transit tokens, by running the following command in cooresponding operation system where datavant executable is installed. You will need to specify the following parameter before running the command: 
 - \<yoursitedvkey\>: is the name key of your site specified in the Datavant portal. Please note that site-specific tokens are not the transit tokens sent to PCORnet. PCORnet transit tokens cannot be converted to `gpc_va` transit tokens.   
 - \<credentials\> or \<credentials.txt\> file: is your user-specific credentials, retrieved from the Datavant portal and stored in a plain text file in the required location
-- \<yoursitenameabbr\>: is your site-specific abbreviation (e.g., 'UMO' for 'University of Missouri', this is in line with PCORnet abbreviations) to separate your hash token file form the others. 
+- \<yoursitenameabbr\>: is your site-specific abbreviation (e.g., 'UMO' for 'University of Missouri', this is in line with PCORnet abbreviations) to separate your hash token file from the others. 
 
 *Windows*
 ```bash
@@ -56,8 +57,11 @@ cat credentials | .\Datavant_Mac transform-tokens --to gpc_va -s <yoursite> -i t
 cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
 ```
 
-#### Step 1.2 (Submission)       
-Participating sites are expected to submit hash token files to GPC CC following the established process of submitting their CDM datamarts onto [GROUSE*](https://github.com/gpcnetwork/GROUSE). Sites can choose to: 
+#### Step 1.2 (GROUSE linkage preservation)
+Participating sites are expected to also attach either the PATID or HASHID to the `tokenization_output_<yoursitenameabbr>.csv` file, so that the hash token file can be linkable to the CDM data submitted to GROUSE. This will allow GPC CC to perform overlap analysis to generate useful statistics on GPC-VA-DoD crosswalk population, which can be used for potential GPC-VA-DoD collaborative grant proposals in the future. 
+
+#### Step 1.3 (Submission)       
+Participating sites are expected to submit hash token files to GPC CC following the established process for[GROUSE*](https://github.com/gpcnetwork/GROUSE) submission using TLS/SSL secure protocol. Sites can choose to: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
 | **GPC Site** | **S3 Bucket URL**                                                  |
@@ -98,24 +102,19 @@ More technical details can be found from the [GROUSE Instruction Page](https://g
 
 
 ### Step 2: Token Integration and Transfer (*at GPC-CC*)
-#### Step 2.1 (Extraction)
-to-do
+#### Step 2.1 (Integration)
+GPC CC will extract all `tokenization_output_<yoursitenameabbr>.csv` files, add de-identified site ID and integrate as one single tokenization file before sending over to VA for crosswalk generation. 
 
-#### Step 2.2 (Integration)
-to-do
-
-#### Step 2.3 (Transfer)
-to-do
+#### Step 2.2 (Transfer)
+GPC CC will submit the integrated hash token file via secure file transfer to VA linkage hub team (VA Team 2). 
 
 ### Step 3: Linkage and Overlap Analysis (*at VA*)
 #### Step 3.1 (Linkage)
-to-do
+VA tokenization team (VA Team 1) will perform data tokenization on DaVINCI data using study-specific key `gov_va_lhb_gpc` and submit the VA hash tokens to VA linkage hub team (VA Team 2) for crosswalk generation. VA Team 2 will then send the matched patient IDs back to GPC CC. 
 
 #### Step 3.2 (Analysis)
-to-do
+VA team and GPC CC will perform overlap analysis and disseminate results back to sites. The analysis results can be used as preliminary data to support future grant proposals.  
 
-#### Step 3.3 (Retention)
-to-do
 
 ************************************************************************
 *Copyright (c) 2022 The Curators of University of Missouri*</br>
