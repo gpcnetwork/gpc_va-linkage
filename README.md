@@ -25,6 +25,8 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 
 - A GPC DROC request has been submitted: [DROC Request Submission](doc/GPCDROCOversightRequest_GPCDRO_2022-11-21_1051.pdf)
 
+- This work is determined as De-identified line-item data sharing, which is covered by current GPC DSA. 
+
 ************************************************************************
 
 ## Participating Sites Workflow
@@ -35,9 +37,7 @@ As entailed in the data flow figure above, sites are only required to complete S
 
 ### Step 1: Data Tokenization and Submission (*at GPC-Site*)
 #### Step 1.1 (Tokenization)         
-Assume that sites have all generated the [site-specific token](https://datavant.com/wp-content/uploads/dlm_uploads/2018/09/WhitePaper_-De-Identifying-and-Linking-Structured-Data.pdf) based on the same configuration as PCORnet hash tokens (tokens 1,2,3,4,5,16). Please ensure that these site-specific tokens are not outdated and a **local mapping to CDM PATID submitted to GROUSE** is preserved. 
-
-PCORnet site-specific tokens generated previously can be further converted to `gpc_va` study-specific transit tokens, by running the following command in cooresponding operation system where datavant executable is installed. You will need to specify the following parameter before running the command: 
+Assume that sites have all generated the [site-specific token](https://datavant.com/wp-content/uploads/dlm_uploads/2018/09/WhitePaper_-De-Identifying-and-Linking-Structured-Data.pdf) based on the same configuration as PCORnet hash tokens (tokens 1,2,3,4,5,16). PCORnet site-specific tokens generated previously can be further converted to `gpc_va` study-specific transit tokens, by running the following command in cooresponding operation system where datavant executable is installed. You will need to specify the following parameter before running the command: 
 - \<yoursitedvkey\>: is the name key of your site specified in the Datavant portal. Please note that site-specific tokens are not the transit tokens sent to PCORnet. PCORnet transit tokens cannot be converted to `gpc_va` transit tokens.   
 - \<credentials\> or \<credentials.txt\> file: is your user-specific credentials, retrieved from the Datavant portal and stored in a plain text file in the required location
 - \<yoursitenameabbr\>: is your site-specific abbreviation (e.g., 'UMO' for 'University of Missouri', this is in line with PCORnet abbreviations) to separate your hash token file from the others. 
@@ -57,10 +57,7 @@ cat credentials | .\Datavant_Mac transform-tokens --to gpc_va -s <yoursite> -i t
 cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
 ```
 
-#### Step 1.2 (GROUSE linkage preservation)     
-Participating sites are expected to also attach either the PATID or HASHID to the `tokenization_output_<yoursitenameabbr>.csv` file, so that the hash token file can be linkable to the CDM data submitted to GROUSE. This will allow GPC CC to perform overlap analysis to generate useful statistics on GPC-VA-DoD crosswalk population, which can be used for potential GPC-VA-DoD collaborative grant proposals in the future. 
-
-#### Step 1.3 (Submission)          
+#### Step 1.2 (Submission)          
 Participating sites are expected to submit hash token files to GPC CC following the established process for[GROUSE*](https://github.com/gpcnetwork/GROUSE) submission using TLS/SSL secure protocol. Sites can choose to: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
