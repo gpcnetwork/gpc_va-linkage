@@ -4,6 +4,11 @@ As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datav
 
 Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis and federate modeling. 
 
+Key Contacts: 
+- Leading site PI: Dr.Jacob Kean <>
+- Coordinating site PI: Dr.Xing Song <>
+- Project Manager: Vyshnavi <>
+
 ****************************************************************************
 
 ## Scope of Work Overview
@@ -23,9 +28,12 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 |Leading site|[Dr.Jacob Kean](https://medicine.utah.edu/faculty/mddetail/u6002766)|University of Utah|[NHS-Kean-UU](doc/NHS-Kean-UU.pdf)|
 |Coordinating site|[Dr.Xing Song](https://medicine.missouri.edu/faculty/xing-song-phd)|University of Missouri|[NHS-Song-MU](doc/NHS-Song-MU.pdf)|
 
-- A GPC DROC request has been submitted: [DROC Request Submission](doc/GPCDROCOversightRequest_GPCDRO_2022-11-21_1051.pdf)
+- A GPC DROC request has been submitted under the type of "GPC de-identified line-item data request": [DROC Request Submission](doc/GPCDROCOversightRequest_GPCDRO_2022-11-21_1051.pdf)
 
-- This work is determined as de-identified line-item data sharing, which is covered by current GPC DSA. 
+- Given that the nature of the project is using Datavant technology to generate de-identified hash token which will be shared with us , and there is no way to re-identify the individuals, this project has been determined as Non-human-subject project by both the University of Utah IRB and MU IRB. De-identified line-item data sharing is covered by the current active GPC DSA. 
+
+- *Payment schedule*: As described in the executed [Datavant order form]() Appendix D, 100% of the funds will be released from Datavant to GPC at linkage completion, which will then be distributed to sites. 
+
 
 ************************************************************************
 
