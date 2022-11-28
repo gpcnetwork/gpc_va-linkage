@@ -25,7 +25,7 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 
 - A GPC DROC request has been submitted: [DROC Request Submission](doc/GPCDROCOversightRequest_GPCDRO_2022-11-21_1051.pdf)
 
-- This work is determined as De-identified line-item data sharing, which is covered by current GPC DSA. 
+- This work is determined as de-identified line-item data sharing, which is covered by current GPC DSA. 
 
 ************************************************************************
 
@@ -58,7 +58,7 @@ cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i
 ```
 
 #### Step 1.2 (Submission)          
-Participating sites are expected to submit hash token files to GPC CC following the established process for[GROUSE*](https://github.com/gpcnetwork/GROUSE) submission using TLS/SSL secure protocol. Sites can choose to: 
+Participating sites are expected to submit hash token files to GPC CC following either of the processes described below. Note that both processes use TLS/SSL secure protocol: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
 | **GPC Site** | **S3 Bucket URL**                                                  |
