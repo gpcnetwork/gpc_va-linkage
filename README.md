@@ -32,7 +32,7 @@ Key Contacts:
 
 - Given that the nature of the project is using Datavant technology to generate de-identified hash token which will be shared with us , and there is no way to re-identify the individuals, this project has been determined as Non-human-subject project by both the University of Utah IRB and MU IRB. De-identified line-item data sharing is covered by the current active GPC DSA. 
 
-- *Payment schedule*: As described in the executed [Datavant order form]() Appendix D, 100% of the funds will be released from Datavant to GPC at linkage completion, which will then be distributed to sites. 
+- *Payment schedule*: As described in the executed [Datavant order form](doc/Final%20BIDS%20DaVINCI%20GPC%20Linkage%20Order%20Form_v2%20(002)%20FE.pdf) Appendix D, 100% of the funds will be released from Datavant to GPC at linkage completion, which will then be distributed to sites. 
 
 
 ************************************************************************
