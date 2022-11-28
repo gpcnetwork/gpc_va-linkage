@@ -8,7 +8,7 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 
 ## Scope of Work Overview
 1. Administrative preparation: Datavant order form, IRB or non-human-determination, GPC DROC request
-2. Hash Token Generation and Submission: Performing sites will submit GPC-specific hash token table to GROUSE following the AWS-based secure process (established GROUSE data submission process)
+2. Hash Token Generation and Submission: Performing sites will submit GPC-specific hash token table to the GPC CC cloud environment securely
 3. Linkage mapping generation: Coordinating site will aggregate hash token tables, perform deduplication and coordinate with leading site and VA to generate linkage mapping
 4. Analysis and Result Dissemination: Authorized analysts at CS will perform overlapping analysis, federated analysis on selected topics to assess the validity and utility of the linked dataset
 
@@ -95,7 +95,7 @@ b) using `aws s3 ls` or `aws s3 sync` commands to upload data to site-specific b
 | UTHouston    | `gpc-uthouston-upload`    |
 | WashU        | `gpc-washu-upload`        |
 
-More technical details can be found from the [GROUSE Instruction Page](https://github.com/gpcnetwork/GROUSE#readme). Note that GROUSE gpcnetwork repo is private for security and privacy reasons. If you can't access the GROUSE gpcnetwork repo, please reach out to ask-umbmi@umsystem.edu or create an issue at https://github.com/gpcnetwork/gpc-va-linkage/issues 
+If more technical details are needed or you would like to request a working session with GPC CC, please reach out to ask-umbmi@umsystem.edu or create an issue at https://github.com/gpcnetwork/gpc-va-linkage/issues. 
 
 
 ### Step 2: Token Integration and Transfer (*at GPC-CC*)        
