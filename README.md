@@ -5,9 +5,9 @@ As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datav
 Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis and federate modeling. 
 
 Key Contacts: 
-- Leading site PI: Dr.Jacob Kean <>
-- Coordinating site PI: Dr.Xing Song <>
-- Project Manager: Vyshnavi <>
+- Leading site PI: Dr.Jacob Kean <jacob.kean@hsc.utah.edu>
+- Coordinating site PI: Dr.Xing Song <xsm7f@umsystem.edu>
+- Project Manager: Vyshnavi <vpknx@umsystem.edu>
 
 ****************************************************************************
 
