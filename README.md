@@ -43,7 +43,7 @@ Key Contacts:
 
 As entailed in the data flow figure above, sites are only required to complete Step 1. For full transparency and document completion, we will describe the entire workflow below: 
 
-### Step 1: Data Tokenization and Submission (*at GPC-Site*)
+### Step 1: Data Tokenization and Submission (*at GPC-Site*) - Due on 02/01/2023
 #### Step 1.1 (Tokenization)         
 Assume that sites have all generated the [site-specific token](https://datavant.com/wp-content/uploads/dlm_uploads/2018/09/WhitePaper_-De-Identifying-and-Linking-Structured-Data.pdf) based on the same configuration as PCORnet hash tokens (tokens 1,2,3,4,5,16). PCORnet site-specific tokens generated previously can be further converted to `gpc_va` study-specific transit tokens, by running the following command in cooresponding operation system where datavant executable is installed. You will need to specify the following parameter before running the command: 
 - \<yoursitedvkey\>: is the name key of your site specified in the Datavant portal. Please note that site-specific tokens are not the transit tokens sent to PCORnet. PCORnet transit tokens cannot be converted to `gpc_va` transit tokens.   
@@ -106,14 +106,14 @@ b) using `aws s3 ls` or `aws s3 sync` commands to upload data to site-specific b
 If more technical details are needed or you would like to request a working session with GPC CC, please reach out to ask-umbmi@umsystem.edu or create an issue at https://github.com/gpcnetwork/gpc-va-linkage/issues. 
 
 
-### Step 2: Token Integration and Transfer (*at GPC-CC*)        
+### Step 2: Token Integration and Transfer (*at GPC-CC*) - Due on 04/01/2023       
 #### Step 2.1 (Integration)     
 GPC CC will extract all `tokenization_output_<yoursitenameabbr>.csv` files, add de-identified site ID and integrate as one single tokenization file before sending over to VA linkage team for crosswalk generation. 
 
 #### Step 2.2 (Transfer)        
 GPC CC will submit the integrated hash token file via secure file transfer to VA linkage hub team (VA Team 2). 
 
-### Step 3: Linkage and Overlap Analysis (*at VA*)      
+### Step 3: Linkage and Overlap Analysis (*at VA*) - Due on 08/01/2023     
 #### Step 3.1 (Linkage)         
 VA tokenization team (VA Team 1) will perform data tokenization on DaVINCI data using study-specific key `gov_va_lhb_gpc` and submit the VA hash tokens to VA linkage hub team (VA Team 2) for crosswalk generation. VA Team 2 will then send the matched patient IDs back to GPC CC. 
 
