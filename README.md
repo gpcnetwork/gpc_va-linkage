@@ -7,7 +7,7 @@ Participating sites will need to maintain [Datavant®](https://datavant.com/) so
 Key Contacts: 
 - Leading site PI: Dr.Jacob Kean <jacob.kean@hsc.utah.edu>
 - Coordinating site PI: Dr.Xing Song <xsm7f@umsystem.edu>
-- Project Manager: Vyshnavi <vpknx@umsystem.edu>
+- Project Manager: Vyshnavi Paka <vpknx@umsystem.edu>
 
 ****************************************************************************
 
