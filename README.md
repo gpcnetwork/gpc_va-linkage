@@ -39,7 +39,7 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
 
 - Given that the nature of the project is using Datavant technology to generate de-identified hash token which will be shared with us , and there is no way to re-identify the individuals, this project has been determined as Non-human-subject project by both the University of Utah IRB and MU IRB. De-identified line-item data sharing is covered by the current active GPC DSA. 
 
-- For sites needing their own IRB, the following are information that could be helpful based on sites' feedback
+- For sites needing their own IRB or additional review, the following are information that could be helpful based on sites' feedback
 <table>
 <tbody>
     <tr>
