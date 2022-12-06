@@ -32,6 +32,32 @@ Key Contacts:
 
 - Given that the nature of the project is using Datavant technology to generate de-identified hash token which will be shared with us , and there is no way to re-identify the individuals, this project has been determined as Non-human-subject project by both the University of Utah IRB and MU IRB. De-identified line-item data sharing is covered by the current active GPC DSA. 
 
+- For sites needing their own IRB, the following are information that could be helpful based on sites' feedback
+<table>
+<tbody>
+    <tr>
+        <th>Question</th>
+        <th>Answer</th>
+    </tr>
+    <tr>
+        <td> 1. Who are contained in the token? </td>
+        <td> - All patients contained in the most recently approved CDM. </td>
+    </tr>
+    <tr>
+        <td> 2. Who will be accessing the data? </td>
+        <td> - GPC CC will recieve the hash token table, aggregate them and send to VA Linkage Team 2 for linkage and overlapping analysis. PIs of leading site and coordinating site and their sponsored informatics/analytics personnel, as well as VA linkage team 2 will have access to the de-identified hash token table. </td>
+    </tr>
+    <tr>
+        <td> 3. Is there additional CDM table needed besides tokens?  </td>
+        <td> No. Only de-identified hash token table needs to be delivered to GPC CC </td>
+    </tr>
+    <tr>
+        <td> 4. Will I need external data sharing committee review? </td>
+        <td> At both Utah and MU, this project has been determined at Non-Human-Subject research </td>
+    </tr>
+</tbody>
+</table>
+
 - *Payment schedule*: As described in the executed [Datavant order form](doc/Final%20BIDS%20DaVINCI%20GPC%20Linkage%20Order%20Form_v2%20(002)%20FE.pdf) Appendix D, 100% of the funds will be released from Datavant to GPC at linkage completion, which will then be distributed to sites. 
 
 
@@ -119,7 +145,6 @@ VA tokenization team (VA Team 1) will perform data tokenization on DaVINCI data 
 
 #### Step 3.2 (Analysis)        
 VA team and GPC CC will perform overlap analysis and disseminate results back to sites. The analysis results can be used as preliminary data to support future grant proposals.  
-
 
 ************************************************************************
 *Copyright (c) 2022 The Curators of University of Missouri*</br>
