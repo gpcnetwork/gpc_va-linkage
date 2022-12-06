@@ -9,7 +9,7 @@ Key Contacts:
 - Coordinating site PI: Dr.Xing Song <xsm7f@umsystem.edu>
 - Project Manager: Vyshnavi Paka <vpknx@umsystem.edu>
 
-There are several angels under discussion right now with a goal to pursue funding opportunities: 
+There are several analytic angels under discussion right now with a goal to pursue funding opportunities: 
 - identify potential care gaps for the GPC-VA crosswalk population using DaVINCI database with a focus on TBI and ALS. 
 - use definite linkage as referential data to validate CDM-based payor type identification.   
 - predictive modeling for VA stauts using private sector data
