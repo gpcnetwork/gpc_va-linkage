@@ -49,11 +49,11 @@ Key Contacts:
     </tr>
     <tr>
         <td> 3. Is there additional CDM table needed besides tokens?  </td>
-        <td> No. Only de-identified hash token table needs to be delivered to GPC CC </td>
+        <td> - No. Only de-identified hash token table needs to be delivered to GPC CC </td>
     </tr>
     <tr>
         <td> 4. Will I need external data sharing committee review? </td>
-        <td> At both Utah and MU, this project has been determined at Non-Human-Subject research </td>
+        <td> - At both Utah and MU, this project has been determined as Non-Human-Subject research, as the encrypted hash token table is considered de-identified data. </td>
     </tr>
 </tbody>
 </table>
