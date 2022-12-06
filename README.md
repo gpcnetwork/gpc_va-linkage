@@ -48,7 +48,7 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
     </tr>
     <tr>
         <td> 1. Who are contained in the token? </td>
-        <td> - All patients contained in the most recently approved CDM. </td>
+        <td> - All patients contained in the most recently approved PCORnet CDM. </td>
     </tr>
     <tr>
         <td> 2. Who will be accessing the data? </td>
@@ -61,6 +61,14 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
     <tr>
         <td> 4. Will I need external data sharing committee review? </td>
         <td> - At both Utah and MU, this project has been determined as Non-Human-Subject research, as the encrypted hash token table is considered de-identified data. </td>
+    </tr>
+    <tr>
+        <td> 5. What data will extracted for the crosswalk population from DaVINCI? </td>
+        <td> - Demographic, diagnosis, procedures, visits, and other relevant clinical observations to understand potential care gaps. </td>
+    </tr>
+    <tr>
+        <td> 6. Will this `gpc_va` token be used to reproduce the linkage or re-idenfity the patients in the future? </td>
+        <td> - No. There will be new study-specific transit token generated for new projects involving GPC-VA linkage </td>
     </tr>
 </tbody>
 </table>
