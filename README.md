@@ -63,8 +63,8 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
         <td> - At both Utah and MU, this project has been determined as Non-Human-Subject research, as the encrypted hash token table is considered de-identified data. </td>
     </tr>
     <tr>
-        <td> 5. What data will extracted for the crosswalk population from DaVINCI? </td>
-        <td> - Demographic, diagnosis, procedures, visits, and other relevant clinical observations to understand potential care gaps. </td>
+        <td> 5. What data will be extracted for the crosswalk population from DaVINCI database? </td>
+        <td> - Demographic, diagnosis, procedures, visits, and other relevant clinical observations in limited dataset format to understand potential care gaps. </td>
     </tr>
     <tr>
         <td> 6. Will this `gpc_va` token be used to reproduce the linkage or re-idenfity the patients in the future? </td>
