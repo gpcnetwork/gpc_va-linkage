@@ -2,12 +2,19 @@
 ## Overview
 As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datavant tokenization of the Veterans Administration (VA) and Department of Defense (DoD) electronic health records to support linkage across PCORnet and the corresponding Governance processes. Leveraging existing inter-network resources and in support of the [brain injury data sharing (BIDS)](doc/GPC_LEC_2022_BIDS-VA-Linkage.pptx) project, we propose a demonstration linkage project between GPC EHR data and DoD/VA EHR data (i.e., the DaVinci database) to advance the understanding of treatment, progression and long-term outcomes of traumatic brain injury (TBI) for Servicemembers and Veterans.
 
-Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis. The overlapping analysis will perform first on the entire GPC population, and then on a subset of overlapping TBI population. Overlapping analysis will be performed on DaVinci database.  
+Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis. The overlapping analysis will perform first on the entire GPC population, and then on a subset of overlapping TBI population. Overlapping analysis will be performed on DaVinci database. This pilot project is to set the stage for future collaborations and funding opportunities between GPC and VA.   
 
 Key Contacts: 
 - Leading site PI: Dr.Jacob Kean <jacob.kean@hsc.utah.edu>
 - Coordinating site PI: Dr.Xing Song <xsm7f@umsystem.edu>
 - Project Manager: Vyshnavi Paka <vpknx@umsystem.edu>
+
+There are several angels under discussion right now with a goal to pursue funding opportunities: 
+- identify potential care gaps for the GPC-VA crosswalk population using DaVINCI database with a focus on TBI and ALS. 
+- use definite linkage as referential data to validate CDM-based payor type identification.   
+- predictive modeling for VA stauts using private sector data
+
+We currently host bi-weekly calls to check-in on project progess and discuss collaboration opportunities. For any GPC researcher who may be interested in the topics above or GPC-VA data in general, you are welcomes to join the call and brainstorm. Please reach out to Vyshnavi to add you to the bi-weekly meeting series.  
 
 ****************************************************************************
 
