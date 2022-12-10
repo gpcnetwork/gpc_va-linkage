@@ -29,7 +29,7 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
 ## Administrative Preparations
 - As an extension of the BIDS project, a no-cost and no-signature Datavant order form has been officially executed for the linkage work. Sites can download the executed order form for local reference from: [Executed Datavant Order Form](doc/Final%20BIDS%20DaVINCI%20GPC%20Linkage%20Order%20Form_v2%20(002)%20FE.pdf)
 
-- The scope of work (SOW) with site budget can also be found here at: [SOW_Site_Budget](doc/SOW-SiteBudget.docx) 
+- The scope of work (SOW) with site budget can also be downloaded from: [SOW with Site Budget](doc/SOW-SiteBudget.docx) 
 
 - Non-human subject derermination letters have been obtained from IRBs of both the leading site (University of Utah) and coordination site (University of Missouri)
 
