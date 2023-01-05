@@ -155,7 +155,7 @@ If more technical details are needed or you would like to request a working sess
 GPC CC will extract all `tokenization_output_<yoursitenameabbr>.csv` files, add de-identified site ID and integrate as one single tokenization file before sending over to VA linkage team for crosswalk generation. 
 
 #### Step 2.2 (Transfer)        
-GPC CC will submit the integrated hash token file via secure file transfer to VA linkage hub team (VA Team 2). 
+GPC CC will submit the integrated hash token file via secure file transfer to VA linkage hub team (VA Team 2). GPC CC will encrypt the aggregated finder file and put on a secure S3 download bucket for VA Team 2 to fetch. The decryption passcode will be sent in a separate secure email to VA Team 2.
 
 ### Step 3: Linkage and Overlap Analysis (*at VA*) - Due on 08/01/2023     
 #### Step 3.1 (Linkage)         
