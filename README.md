@@ -110,7 +110,7 @@ cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i
 ```
 
 #### Step 1.2 (Submission)          
-Participating sites are expected to submit hash token files to GPC CC following either of the processes described below. Note that both processes use TLS/SSL secure protocol: 
+Participating sites are expected to submit hash token files to GPC CC using the existing `GPC-<site>-Data-Load` role. You will than follow either of the processes described below. Note that both processes use TLS/SSL secure protocol: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
 | **GPC Site** | **S3 Bucket URL**                                                  |
@@ -128,11 +128,11 @@ a) either submit to their site-specific upload buckets via your site-specific su
 | UTHouston    | https://s3.console.aws.amazon.com/s3/buckets/gpc-uthouston-upload/ |
 | WashU        | https://s3.console.aws.amazon.com/s3/buckets/gpc-washu-upload/     |
 
-OR 
+b) OR using AWS CLI to upload data to site-specific bucket. More specifically, 
+- `aws s3 ls {upload-bucket-name}` -- list commands to see current objects under the designated bucket
+- `aws s3 cp <path-to-file> {upload-bucket-name}` -- to copy single file into the designated bucket
 
-b) using `aws s3 ls` or `aws s3 sync` commands to upload data to site-specific bucket: 
-
-| **GPC Site** | **<upload-bucket-name>**  |
+| **GPC Site** | **{upload-bucket-name}**  |
 |--------------|---------------------------|
 | Allina       | `gpc-allina-upload`       |
 | IHC          | `gpc-ihc-upload`          |
@@ -146,6 +146,12 @@ b) using `aws s3 ls` or `aws s3 sync` commands to upload data to site-specific b
 | UIOWA        | `gpc-uiowa-upload`        |
 | UTHouston    | `gpc-uthouston-upload`    |
 | WashU        | `gpc-washu-upload`        |
+
+
+
+```
+aws s3 ls s3://gpc-allina-upload
+```
 
 If more technical details are needed or you would like to request a working session with GPC CC, please reach out to ask-umbmi@umsystem.edu or create an issue at https://github.com/gpcnetwork/gpc-va-linkage/issues. 
 
