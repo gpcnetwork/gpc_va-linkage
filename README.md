@@ -110,7 +110,7 @@ cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i
 ```
 
 #### Step 1.2 (Submission)          
-Participating sites are expected to submit hash token files to GPC CC using the existing `GPC-<site>-Data-Load` role. Any other roles will not guarantee access to the designated upload buckets (you may run into `access denied` error is using a different role). You will than follow either of the processes described below. Note that both processes use TLS/SSL secure protocol: 
+Participating sites are expected to submit hash token files to GPC CC using the existing `GPC-<site>-Data-Load` role. Any other roles will not guarantee access to the designated upload buckets (you may run into `access denied` error if using the wrong role). You will than follow either of the processes described below. Note that both processes use TLS/SSL secure protocol: 
 a) either submit to their site-specific upload buckets via your site-specific submission url: 
 
 | **GPC Site** | **S3 Bucket URL**                                                  |
