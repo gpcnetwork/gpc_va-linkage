@@ -2,7 +2,7 @@
 ## Overview
 As one of the contractual milestones for PCORnet Phase 3, GPC will advance Datavant tokenization of the Veterans Administration (VA) and Department of Defense (DoD) electronic health records to support linkage across PCORnet and the corresponding Governance processes. Leveraging existing inter-network resources and in support of the [brain injury data sharing (BIDS)](doc/GPC_LEC_2022_BIDS-VA-Linkage.pptx) project, we propose a demonstration linkage project between GPC EHR data and DoD/VA EHR data (i.e., the DaVinci database) to advance the understanding of treatment, progression and long-term outcomes of traumatic brain injury (TBI) for Servicemembers and Veterans.
 
-Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis. The overlapping analysis will perform first on the entire GPC population, and then on a subset of overlapping TBI population. Overlapping analysis will be performed on DaVinci database. This pilot project is to set the stage for future collaborations and funding opportunities between GPC and VA.   
+Participating sites will need to maintain [Datavant®](https://datavant.com/) software for generating GPC-specific hash token used for linking with VA health data in support of the proposed overlapping analysis. The overlapping analysis will perform first on the entire GPC population, and then on a subset of overlapping TBI population. Overlapping analysis will be performed on DaVinci database and **results will be disseminated to sites**. This pilot project is to set the stage for future collaborations and funding opportunities between GPC and VA.   
 
 Key Contacts: 
 - Leading site PI: Dr.Jacob Kean <jacob.kean@hsc.utah.edu>
@@ -22,11 +22,13 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
 1. Administrative preparation: Datavant order form, IRB or non-human-determination, GPC DROC request
 2. Hash Token Generation and Submission: Performing sites will submit GPC-specific hash token table to the GPC CC cloud environment securely
 3. Linkage mapping generation: Coordinating site will aggregate hash token tables, perform deduplication and coordinate with leading site and VA to generate linkage mapping
-4. Analysis and Result Dissemination: Authorized analysts at CS will perform overlapping analysis, federated analysis on selected topics to assess the validity and utility of the linked dataset
+4. **Analysis and Result Dissemination: Authorized analysts at leading site will perform overlapping analysis to assess the validity and utility of the linked dataset, and will dissemintate results back to participating sites.** 
 
 ****************************************************************************
 
 ## Administrative Preparations
+- **GPC will establish the External Institution Collaborator Agreement (EICA) with VA.** 
+
 - As an extension of the BIDS project, a no-cost and no-signature Datavant order form has been officially executed for the linkage work. Sites can download the executed order form for local reference from: [Executed Datavant Order Form](doc/Final%20BIDS%20DaVINCI%20GPC%20Linkage%20Order%20Form_v2%20(002)%20FE.pdf)
 
 - The scope of work (SOW) with site budget can also be downloaded from: [SOW with Site Budget](doc/SOW-SiteBudget.docx)     
