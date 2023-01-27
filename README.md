@@ -22,7 +22,7 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
 1. Administrative preparation: Datavant order form, IRB or non-human-determination, GPC DROC request
 2. Hash Token Generation and Submission: Performing sites will submit GPC-specific hash token table to the GPC CC cloud environment securely
 3. Linkage mapping generation: Coordinating site will aggregate hash token tables, perform deduplication and coordinate with leading site and VA to generate linkage mapping
-4. **Analysis and Result Dissemination: Authorized analysts at leading site will perform overlapping analysis to assess the validity and utility of the linked dataset, and will dissemintate results back to participating sites. 
+4. **Analysis and Result Dissemination: Authorized analysts at leading site will perform overlapping analysis to assess the validity and utility of the linked dataset, and will dissemintate results back to participating sites.** 
 
 ****************************************************************************
 
