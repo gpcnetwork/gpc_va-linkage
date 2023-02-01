@@ -134,7 +134,10 @@ cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i
 | WashU        | https://s3.console.aws.amazon.com/s3/buckets/gpc-washu-upload/     |
 
 option b): Using AWS CLI to upload data to site-specific bucket. More specifically, 
-- grab role credentials from **command line** or **programmatic access** to authenticate
+- grab role credentials from **command line or programmatic access** to authenticate
+
+![aws-cli-login](res/aws-cli-login.png)
+
 - `aws s3 ls s3://{upload-bucket-name}` -- list commands to see current objects under the designated bucket
 - `aws s3 cp <path-to-file> {upload-bucket-name}` -- to copy single file into the designated bucket
 
