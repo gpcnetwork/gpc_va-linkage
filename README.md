@@ -111,9 +111,12 @@ cat credentials | .\Datavant_Mac transform-tokens --to gpc_va -s <yoursite> -i t
 cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i tokenization_input.csv -o tokenization_output_<yoursitenameabbr>.csv --credentials
 ```
 
-#### Step 1.2 (Submission)          
-Participating sites are expected to submit hash token files to GPC CC using the existing `GPC-<site>-Data-Load` role. Any other roles will not guarantee access to the designated upload buckets (you may run into `access denied` error if using the wrong role). You will than follow either of the processes described below. Note that both processes use TLS/SSL secure protocol: 
-a) either submit to their site-specific upload buckets via your site-specific submission url: 
+#### Step 1.2 (Submission)        
+1. **Login with Data-Load role**: go to <https://umbmi.awsapps.com/start#/> (Single-Sign-On portal), and log in to the AWS Management Console by selecting the “Management Console” next to your pre-defined role (`GPC-XXX-Data-Load`). Note that you will be required to put in MFA codes every time log into the AWS account. Any other roles will not guarantee access to the designated upload buckets (you may run into `access denied` error if using the wrong role). 
+
+2. **Upload data to designated bucket**: you will than follow either of the processes described below. Note that both processes use TLS/SSL secure protocols: 
+
+- option a): Submit to their **site-specific upload buckets** via your site-specific submission url. **After logged in from the SSO portatl, instead of directly navigating that you will need to open a different brower tab and directly paste/ 
 
 | **GPC Site** | **S3 Bucket URL**                                                  |
 |--------------|--------------------------------------------------------------------|
@@ -130,8 +133,9 @@ a) either submit to their site-specific upload buckets via your site-specific su
 | UTHouston    | https://s3.console.aws.amazon.com/s3/buckets/gpc-uthouston-upload/ |
 | WashU        | https://s3.console.aws.amazon.com/s3/buckets/gpc-washu-upload/     |
 
-b) OR using AWS CLI to upload data to site-specific bucket. More specifically, 
-- `aws s3 ls {upload-bucket-name}` -- list commands to see current objects under the designated bucket
+option b): Using AWS CLI to upload data to site-specific bucket. More specifically, 
+- grab role credentials from **command line** or **programmatic access** to authenticate
+- `aws s3 ls s3://{upload-bucket-name}` -- list commands to see current objects under the designated bucket
 - `aws s3 cp <path-to-file> {upload-bucket-name}` -- to copy single file into the designated bucket
 
 | **GPC Site** | **{upload-bucket-name}**  |
