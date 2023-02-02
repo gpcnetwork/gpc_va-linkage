@@ -116,7 +116,7 @@ cat credentials | .\Datavant_Linux transform-tokens --to gpc_va -s <yoursite> -i
 
 2. **Upload data to designated bucket**: you will than follow either of the processes described below. Note that both processes use TLS/SSL secure protocols: 
 
-- option a): Submit to their **site-specific upload buckets** via your site-specific submission url. **After logged in from the SSO portatl, instead of directly navigating that you will need to open a different brower tab and directly paste/ 
+- option a): Submit to their **site-specific upload buckets** via your site-specific submission url. **After logged in from the SSO portatl, instead of navigating to S3 bucket, you will need to open a different brower and directly paste the designated s3 bucket url to go directly to the desingated s3 bucket. 
 
 | **GPC Site** | **S3 Bucket URL**                                                  |
 |--------------|--------------------------------------------------------------------|
