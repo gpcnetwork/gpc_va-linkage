@@ -10,7 +10,7 @@ Please contact [<u>ask-bmi-prod@umsystem.edu</u>](mailto:umbmiaws-prod@umsystem.
 
 Once the user account is initialized and activated, you can access your account from the [AWS SSO portal](https://umbmi.awsapps.com/start#/) with MFA authentication required each time. Click the `AWS Account` and then `Staging-Data` account, you will see the following two options for accessing the s3 bucket resource: 
 
-![aws-login](res/img/aws-login.png)
+![aws-login](../res/img/aws-login.png)
 
 - Management console: web-based interface
 - Command line or programmatic access: role credentials for accessing aws resources using aws command line
@@ -19,7 +19,7 @@ Once the user account is initialized and activated, you can access your account 
 ## Option A - AWS Management Console
 1. If you choose to access s3 download bucket on management console, please first double check on the right upper corner of the page that your Role is correct and make sure that you are in the **us-east-2 ohio** region 
 
-![check-region](res/img/check-region.png)
+![check-region](../res/img/check-region.png)
 
 2. Open another web browser tab and enter the following URL which will directly prompt you to the designated S3 console for data dowload. 
 > 
@@ -27,7 +27,7 @@ Once the user account is initialized and activated, you can access your account 
 
 3. Download the aggregated hash token csv file named `gpc-va_dv-hash-token_<most-recent-date>.csv` directly from the console: 
 
-![download-from-console](res/img/download-from-console.png)
+![download-from-console](../res/img/download-from-console.png)
 
 If there are multiple files in the bucket, you can easily identify the more recent one by `soring by upload_date`
 
