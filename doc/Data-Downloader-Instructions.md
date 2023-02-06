@@ -22,7 +22,9 @@ Once the user account is initialized and activated, you can access your account 
 ![check-region](../res/img/check-region.png)
 
 2. Open another web browser tab and enter the following URL which will directly prompt you to the designated S3 console for data dowload. 
-> 
+
+> https://s3.console.aws.amazon.com/s3/bucketsva_download/
+
 **Important note: DO NOT directly navigate to S3 bucket from management console as the data downloader role do not have the privilege to list all the s3 bucket within the staging-data account**. 
 
 3. Download the aggregated hash token csv file named `gpc-va_dv-hash-token_<most-recent-date>.csv` directly from the console: 
