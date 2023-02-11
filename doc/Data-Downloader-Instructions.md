@@ -23,7 +23,7 @@ Once the user account is initialized and activated, you can access your account 
 
 2. Open another web browser tab and enter the following URL which will directly prompt you to the designated S3 console for data dowload. 
 
-> https://s3.console.aws.amazon.com/s3/buckets/va_download/
+> https://s3.console.aws.amazon.com/s3/buckets/va-download/
 
 **Important note: DO NOT directly navigate to S3 bucket from management console as the data downloader role do not have the privilege to list all the s3 bucket within the staging-data account**. 
 
