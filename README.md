@@ -19,7 +19,7 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
 ****************************************************************************
 
 ## Scope of Work Overview
-- **milestone 1**: Administrative preparation: Datavant order form, IRB or non-human-determination, GPC DROC request
+- **milestone 1**: Administrative preparation: GPC EICA execution, Datavant order form, IRB or non-human-determination, GPC DROC request
 - **milestone 2**: Hash Token Generation and Submission: Performing sites will submit GPC-specific hash token table to the GPC CC cloud environment securely
 - **milestone 3**: Linkage mapping generation: Coordinating site will aggregate hash token tables, perform deduplication and coordinate with leading site and VA to generate linkage mapping
 - **milestone 4**: Analysis and Result Dissemination: Authorized analysts at leading site will perform overlapping analysis to assess the validity and utility of the linked dataset, and will dissemintate results back to participating sites.
@@ -27,7 +27,8 @@ We currently host bi-weekly calls to check-in on project progess and discuss col
 ****************************************************************************
 
 ## Administrative Preparations
-- **GPC will establish the External Institution Collaborator Agreement (EICA) with VA.** 
+
+- GPC EICA executed with VA as an external partner: [Executed GPC EICA](doc/1.%20FSS%20License%20Agmt%20to%20WH-CSPCC_Clean%2022%20November%202022%20for%20CO%20Portal%20-%20VA%20OGC%203.24.23_update_signedJK.pdf)
 
 - As an extension of the BIDS project, a no-cost and no-signature Datavant order form has been officially executed for the linkage work. Sites can download the executed order form for local reference from: [Executed Datavant Order Form](doc/Final%20BIDS%20DaVINCI%20GPC%20Linkage%20Order%20Form_v2%20(002)%20FE.pdf)
 
