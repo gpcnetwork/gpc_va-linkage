@@ -124,7 +124,7 @@ for idx, site in enumerate(gpc_dict):
     
     # attach siteid
     side_idx = gpc_dict[site]
-    df['SITEID'] = f'S{side_idx}'
+    df['SITEID'] = f'{side_idx}'
     
     #=====================================================
     if diagnostic_mode: print(df.head()); print(df.columns)
@@ -151,8 +151,6 @@ for idx, site in enumerate(gpc_dict):
     
     # remove appended file form disk
     os.remove(src_file)
-    
-    
 
 '''
 #===== upload from local disk to s3 bucket
