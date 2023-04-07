@@ -18,7 +18,7 @@ import gc
 import os
 
 #diagnosic mode
-diagnostic_mode = True
+diagnostic_mode = False
 
 #if skip download
 skip_download = False
@@ -134,20 +134,20 @@ for idx, site in enumerate(gpc_dict):
     file_name = f'gpc-va-hashtoken-{proc_date}.csv'
     with open(file_name, 'a') as f:
         #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
-        df.to_csv(f, mode='a', header=f.tell()==0)
+        df.to_csv(f, mode='a', header=f.tell()==0,index=False)
     
     # get sample for each file
     file_name = f'gpc-va-hashtoken-{proc_date}-sample.csv'
     with open(file_name, 'a') as f:
         #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
-        df.sample(5).to_csv(f, mode='a', header=f.tell()==0)
+        df.sample(5).to_csv(f, mode='a', header=f.tell()==0,index=False)
     
     # get summary for each file
     df_summ = df.groupby(['SITEID'])['PATID'].count()
     file_name = f'gpc-va-hashtoken-{proc_date}-summ.csv'
     with open(file_name, 'a') as f:
         #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
-        df_summ.to_csv(f, mode='a', header=f.tell()==0)
+        df_summ.to_csv(f, mode='a', header=f.tell()==0,index=False)
     
     # remove appended file form disk
     os.remove(src_file)
