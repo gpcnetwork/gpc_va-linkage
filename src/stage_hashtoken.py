@@ -15,6 +15,7 @@ import pandas as pd
 import csv
 from datetime import datetime
 import gc
+import os
 
 #diagnosic mode
 diagnostic_mode = True
@@ -23,7 +24,7 @@ diagnostic_mode = True
 skip_download = False
 
 #if skip unzip and copy from source/ to extract/
-skip_copy = False
+skip_copy = True
 
 #tagged date
 proc_date = datetime.today().strftime('%Y%m%d')
@@ -36,24 +37,25 @@ zip_types = [
 ]
 
 #loop over gpc sites
-gpc_list = [  
-            #   'mu'         # - S00
-            #   'allina'     # - S01
-            #  ,'ihc'        # - S02
-            #   'kumc'       # - S03
-            #  ,'mcri'       # - S04
-            #  ,'mcw'        # - S05
-            #  ,'uiowa'      # - S06
-            #  ,'unmc'       # - S07
-            #  ,'uthouston'  # - S08
-            #  ,'uthscsa'    # - S09
-            #  ,'utsw'       # - S10
-            #  ,'uu'         # - S11
-            #  ,'washu'      # - S12
-            ]
+gpc_dict = {
+    'mu':'S00',
+    'allina':'S01',
+    'ihc':'S02',
+    'kumc':'S03',
+    'mcri':'S04',
+    'mcw':'S05',
+    # 'uiowa':'S06',
+    'unmc':'S07',
+    'uthouston':'S08',
+    'uthscsa':'S09',
+    'utsw':'S10',
+    'uu':'S11',
+    'washu':'S12'
+}
+
 
 #==== loop over files
-for idx, site in enumerate(gpc_list):
+for idx, site in enumerate(gpc_dict):
     gc.collect()
     
     # reconstruct source bucket name and target schema name
@@ -78,11 +80,18 @@ for idx, site in enumerate(gpc_list):
                 src_bucket = src_bucket, src_key = src_key,
                 tgt_bucket = src_bucket, tgt_prefix = tgt_prefix    
             )
-        else:
+        elif '.gz' in src_file:
+            zip_obj = utils.zipped_gz(
+                src_bucket = src_bucket, src_key = src_key,
+                tgt_bucket = src_bucket, tgt_prefix = tgt_prefix    
+            )
+            skip_download = False
+        elif '.7z' in src_file:
             zip_obj = utils.zipped_7z(
                 src_bucket = src_bucket, src_key = src_key,
                 tgt_bucket = src_bucket, tgt_prefix = tgt_prefix    
             )
+            skip_download = False
         src_file = zip_obj.unzip_and_upload()[0]
     else:
         # copy over to target location
@@ -98,9 +107,9 @@ for idx, site in enumerate(gpc_list):
         utils.Download_S3Objects(src_bucket,tgt_key,src_file)
     
     # sites may submit illegal formated files
-    delim = None
-    if site in ['allina']:
-        delim = '|' 
+    delim = '|'
+    if site in ['mu','ihc','uthouston']:
+        delim = None 
     df = pd.read_csv(
         src_file,
         delimiter = delim,
@@ -114,18 +123,36 @@ for idx, site in enumerate(gpc_list):
     #=====================================================
     
     # attach siteid
-    side_idx = "{:02d}".format(gpc_list.index(site))
+    side_idx = gpc_dict[site]
     df['SITEID'] = f'S{side_idx}'
     
     #=====================================================
     if diagnostic_mode: print(df.head()); print(df.columns)
     #=====================================================
     
-    # download from memory and append to file on disk (if file of same name exists)
+    # download to disk and append to existing file
     file_name = f'gpc-va-hashtoken-{proc_date}.csv'
     with open(file_name, 'a') as f:
         #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
         df.to_csv(f, mode='a', header=f.tell()==0)
+    
+    # get sample for each file
+    file_name = f'gpc-va-hashtoken-{proc_date}-sample.csv'
+    with open(file_name, 'a') as f:
+        #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
+        df.sample(5).to_csv(f, mode='a', header=f.tell()==0)
+    
+    # get summary for each file
+    df_summ = df.groupby(['SITEID'])['PATID'].count()
+    file_name = f'gpc-va-hashtoken-{proc_date}-summ.csv'
+    with open(file_name, 'a') as f:
+        #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
+        df_summ.to_csv(f, mode='a', header=f.tell()==0)
+    
+    # remove appended file form disk
+    os.remove(src_file)
+    
+    
 
 '''
 #===== upload from local disk to s3 bucket

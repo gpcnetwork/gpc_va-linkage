@@ -17,6 +17,8 @@ import psutil
 import time
 import zipfile
 import urllib
+import gzip
+import shutil
 import py7zr
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
@@ -122,6 +124,17 @@ class zipped_file_s3(ABC):
         """unzip file on local disk and upload to target location in s3"""
         if verb:
             print("unzip file from ",f'{self.src_bucket}/{self.src_key}'," to ",f'{self.tgt_bucket}/{self.tgt_prefix}')
+    
+    def download_s3obj(self):
+        zipname = self.src_key.rsplit('/',1)[-1]
+        s3 = boto3.client('s3')
+        with open(zipname, 'wb') as data:
+            s3.download_fileobj(
+                Bucket  = self.src_bucket, 
+                Key = self.src_key,
+                Fileobj = data
+            )
+        return s3
 
 @dataclass
 class zipped_zip(zipped_file_s3):
@@ -149,16 +162,34 @@ class zipped_zip(zipped_file_s3):
         return z.namelist() 
 
 @dataclass
-class zipped_7z(zipped_file_s3):
-    """files compressed using 7-zip technique"""
+class zipped_gz(zipped_file_s3):
+    """files compressed using gzip technique"""
     def unzip_and_upload(self):
-        # download 7z-like file to local disk
-        s3 = boto3.resource('s3')
-        s3.download_fileobj(
-            Bucket  = self.src_bucket, 
-            Key = self.src_key
-        )
+        # download
         zipname = self.src_key.rsplit('/',1)[-1]
+        s3 = self.download_s3obj()
+        # unzip, assume single file
+        with gzip.open(zipname, 'rb') as f_in:
+            filename = zipname.rsplit(".",1)[0]
+            with open(filename, 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
+        # upload
+        tgt_key = f'{self.tgt_prefix}/{filename}'
+        s3.upload_file(
+            Filename = filename,
+            Bucket=self.tgt_bucket,
+            Key=tgt_key
+        )
+                
+        # return extracted file names
+        return [filename] 
+
+@dataclass
+class zipped_7z(zipped_file_s3):
+    """files compressed using gzip technique"""
+    def unzip_and_upload(self):
+        zipname = self.src_key.rsplit('/',1)[-1]
+        s3 = self.download_s3obj()
         # collect all file names
         with py7zr.SevenZipFile(zipname, 'r') as zip:
             allfiles = zip.getnames()
