@@ -1,0 +1,22 @@
+###### Requirements without Version Specifiers ######
+unicodecsv
+openpyxl
+parse
+boto3
+snowflake-connector-python
+smart_open
+matplotlib
+pathlib
+pandas
+fsspec
+s3fs
+psutil
+fastparquet
+sas7bdat
+pyreadstat
+py7zr
+
+###### Requirements with Version Specifiers ######
+cffi > 1.10.1
+pyarrow<10.1.0,>=10.0.0
+

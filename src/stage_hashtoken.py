@@ -6,41 +6,56 @@
 # - move file from current location to pre-stage source/ folder
 # - copy or unzip from source/ to extract/ 
 # - load into to memory and add SITEID
-# - download to disk as csv tile
+# - download to disk as csv file
 # - append csv to the integrated hash token table                                       
 #####################################################################
 
 import utils 
 import pandas as pd
 import csv
+from datetime import datetime
+import gc
 
 #diagnosic mode
-diagnostic_mode = False
+diagnostic_mode = True
 
 #if skip download
 skip_download = False
 
 #if skip unzip and copy from source/ to extract/
-skip_copy = True
+skip_copy = False
+
+#tagged date
+proc_date = datetime.today().strftime('%Y%m%d')
+
+#possible zip types
+zip_types = [
+    ".zip",    
+    ".7z",
+    ".gz"
+]
 
 #loop over gpc sites
 gpc_list = [  
-              'mu'
-            #  ,'allina'
-            #  ,'ihc'
-            #  ,'kumc'
-            #  ,'mcri'
-            #  ,'mcw'
-            #  ,'uiowa'
-            #  ,'unmc'
-            #  ,'uthouston'
-            #  ,'uthscsa'
-            #  ,'utsw'
-            #  ,'uu'
-            #  ,'washu'
+            #   'mu'         # - S00
+            #   'allina'     # - S01
+            #  ,'ihc'        # - S02
+            #   'kumc'       # - S03
+            #  ,'mcri'       # - S04
+            #  ,'mcw'        # - S05
+            #  ,'uiowa'      # - S06
+            #  ,'unmc'       # - S07
+            #  ,'uthouston'  # - S08
+            #  ,'uthscsa'    # - S09
+            #  ,'utsw'       # - S10
+            #  ,'uu'         # - S11
+            #  ,'washu'      # - S12
             ]
-            
+
+#==== loop over files
 for idx, site in enumerate(gpc_list):
+    gc.collect()
+    
     # reconstruct source bucket name and target schema name
     src_bucket = f'gpc-{site}-upload'   # make sure the bucket/subfolder name structure is correct
     src_prefix = 'va-linkage-pilot/source'
@@ -56,26 +71,43 @@ for idx, site in enumerate(gpc_list):
     if diagnostic_mode: print(src_key,":",max_mod_date)
     #=====================================================
 
-    tgt_prefix = 'va-linkage-pilot/extract/'
-    if not skip_copy:
+    tgt_prefix = 'va-linkage-pilot/extract'
+    if any(zt in src_file for zt in zip_types):
         if '.zip' in src_file:
-            # unzip file and save to target location
-            utils.unzip_file(
+            zip_obj = utils.zipped_zip(
                 src_bucket = src_bucket, src_key = src_key,
                 tgt_bucket = src_bucket, tgt_prefix = tgt_prefix    
             )
         else:
-            # copy over to target location
-            utils.file_to_folder(
+            zip_obj = utils.zipped_7z(
+                src_bucket = src_bucket, src_key = src_key,
+                tgt_bucket = src_bucket, tgt_prefix = tgt_prefix    
+            )
+        src_file = zip_obj.unzip_and_upload()[0]
+    else:
+        # copy over to target location
+        if not skip_copy:
+            utils.copy_file_to_folder(
                 bucket_name = src_bucket,
                 src_file = src_key,
                 tgt_folder = tgt_prefix)
 
     # load unzipped csv file from disk
     if not skip_download:
-        tgt_key = f'{tgt_prefix}{src_file}'
+        tgt_key = f'{tgt_prefix}/{src_file}'
         utils.Download_S3Objects(src_bucket,tgt_key,src_file)
-    df = pd.read_csv(src_file,header = 0,skiprows = 0)
+    
+    # sites may submit illegal formated files
+    delim = None
+    if site in ['allina']:
+        delim = '|' 
+    df = pd.read_csv(
+        src_file,
+        delimiter = delim,
+        names=['PATID','TOKEN_1','TOKEN_2','TOKEN_3','TOKEN_4','TOKEN_5','TOKEN_16','TOKEN_ENCRYPTION_KEY'],
+        header = None,
+        skiprows = 1
+    )
     
     #=====================================================
     if diagnostic_mode: print(df.head()); print(df.columns)
@@ -89,15 +121,19 @@ for idx, site in enumerate(gpc_list):
     if diagnostic_mode: print(df.head()); print(df.columns)
     #=====================================================
     
-    # save to target s3 bucket
-    #https://stackoverflow.com/questions/38154040/save-dataframe-to-csv-directly-to-s3-python
-    tgt2_key_loc = f'gpc-va-hashtoken-{max_mod_date}.csv'
-    # df.to_csv(tgt2_key,index=False)
-    # with open(tgt2_key_loc, 'a') as f:
-    #     #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
-    #     df.to_csv(f, mode='a', header=f.tell()==0)
-    utils.Upload_S3Objects(
-        file_to_save = df,
-        bucket_name = 'va-download',
-        tgt_key = tgt2_key_loc
-    )
+    # download from memory and append to file on disk (if file of same name exists)
+    file_name = f'gpc-va-hashtoken-{proc_date}.csv'
+    with open(file_name, 'a') as f:
+        #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
+        df.to_csv(f, mode='a', header=f.tell()==0)
+
+'''
+#===== upload from local disk to s3 bucket
+utils.Upload_S3Objects(
+    path_to_file = f'{file_name}.csv',
+    bucket_name = 'nextgenbmi-snowpipe-master', # require put permission to the target bucket
+    tgt_key = f'{file_name}.csv'
+)
+'''
+#=====
+utils.pyclean()

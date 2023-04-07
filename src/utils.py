@@ -17,6 +17,9 @@ import psutil
 import time
 import zipfile
 import urllib
+import py7zr
+from dataclasses import dataclass
+from abc import ABC, abstractmethod
 
 def get_objects(bucket_name,subfolder=None,s3_client=None)->dict:
     """
@@ -106,154 +109,96 @@ def download_zip(url:str,path_to_folder='default')->list:
     file_lst = zipped_file.namelist()
     print(f'{file_lst} downloaded and unpacked!')
 
-# https://medium.com/@johnpaulhayes/how-extract-a-huge-zip-file-in-an-amazon-s3-bucket-by-using-aws-lambda-and-python-e32c6cf58f06
-def unzip_file(src_bucket:str,src_key:str,tgt_bucket:str,tgt_prefix:str,verb=True)->None:
-    # read zip file into a BytesIO buffer object
-    s3_resource = boto3.resource('s3')
-    zip_obj = s3_resource.Object(bucket_name=src_bucket, key=src_key)
-    buffer = io.BytesIO(zip_obj.get()["Body"].read())
-    # upload individual zipped file into a starget bucket
-    z = zipfile.ZipFile(buffer)
-    for filename in z.namelist():
-        file_info = z.getinfo(filename)
-        tgt_key = f'{tgt_prefix}/{filename}'
-        s3_resource.meta.client.upload_fileobj(
-            z.open(filename),
-            Bucket=tgt_bucket,
-            Key=tgt_key
-        )
+@dataclass
+class zipped_file_s3(ABC):
+    """representation of a zipped file object in s3 bucket"""
+    src_bucket:str
+    src_key:str
+    tgt_bucket:str
+    tgt_prefix:str
+
+    @abstractmethod
+    def unzip_and_upload(self,verb=True)->None:
+        """unzip file on local disk and upload to target location in s3"""
         if verb:
-            print("unzip file from ",f'{src_bucket}/{src_key}'," to ",f'{tgt_bucket}/{tgt_key}')
+            print("unzip file from ",f'{self.src_bucket}/{self.src_key}'," to ",f'{self.tgt_bucket}/{self.tgt_prefix}')
 
-# def unzip_file_7z():
-#     # sudo yum install p7zip -y
-#     def getListOfFiles(dirName):
-#     # create a list of file and sub directories 
-#     # names in the given directory 
-#     listOfFile = os.listdir(dirName)
-#     allFiles = list()
-#     # Iterate over all the entries
-#     for entry in listOfFile:
-#         # Create full path
-#         fullPath = os.path.join(dirName, entry)
-#         # If entry is a directory then get the list of files in this directory 
-#         if os.path.isdir(fullPath):
-#             allFiles = allFiles + getListOfFiles(fullPath)
-#         else:
-#             allFiles.append(fullPath)
-                
-#     return allFiles
+@dataclass
+class zipped_zip(zipped_file_s3):
+    """files compressed using conventional zip technique"""
+    # https://medium.com/@johnpaulhayes/how-extract-a-huge-zip-file-in-an-amazon-s3-bucket-by-using-aws-lambda-and-python-e32c6cf58f06
+    def unzip_and_upload(self):
+        # read zip file into a BytesIO buffer object
+        s3_resource = boto3.resource('s3')
+        zip_obj = s3_resource.Object(
+            bucket_name=self.src_bucket, 
+            key=self.src_key
+        )
+        buffer = io.BytesIO(zip_obj.get()["Body"].read())
+        # upload individual zipped file into a target bucket
+        z = zipfile.ZipFile(buffer)
+        for filename in z.namelist():
+            file_info = z.getinfo(filename)
+            tgt_key = f'{self.tgt_prefix}/{filename}'
+            s3_resource.meta.client.upload_fileobj(
+                z.open(filename),
+                Bucket=self.tgt_bucket,
+                Key=tgt_key
+            )
+        # return extracted file names
+        return z.namelist() 
 
-#     try:
-#         zipped_path_keys = files_to_unzip('gpc-allina-upload','mapping')
-#         current_dir = os.getcwd() 
-#         directory = 'extract'
-#         path = os.path.join(current_dir, directory)
-    
-#         if os.path.isdir(path) != True:
-#             os.mkdir(path)
-#         print("Directory for extracted files: ",path)
-        
-#         s3 = boto3.client('s3')
-#         for key,value in zipped_path_keys.items():
-#             with open(value[1], 'wb') as f:
-#                 print("Downloading... ",value[1])
-#                 s3.download_fileobj(key, value[1], f)
-#                 f.close()
-#             print("Extracting... ",value[1])
-            
-#             cmd = '7za x \''+value[1]+'\' -o'+path # command to extract zip file into path (directory)
-#             os.system(cmd) # run command
-#             print(value[1], "Extracted... \n")
-#             with zipfile.ZipFile(value[1], 'r') as zipObj:
-#                 listOfiles = zipObj.namelist()
-#                 print("Files to upload into S3: \n",listOfiles)
-#                 zipObj.close()
-    
-#             files_path = getListOfFiles(path) # list of path-files
-    
-#             split_path_files = {} # seperate path and files
-#             for i in files_path:
-#                 if os.path.split(i)[0] not in split_path_files:
-#                     split_path_files[os.path.split(i)[0]]=[os.path.split(i)[1]]
-#                 else:
-#                     split_path_files[os.path.split(i)[0]].append(os.path.split(i)[1])
-    
-#             for path,files in split_path_files.items(): #
-#                 for file in files:
-#                     print("Uploading... ",file)
-#                     response = s3.upload_file(path+"/"+file, key, "extract/"+file)
-    
-#             time.sleep(300)
-#             os.system("rm *.zip")
-#             os.system("rm -rf extracted_files/"+"*")
-    
-#         print('Done!')
-#     except Exception as e:
-#         logging.error(traceback.format_exc())
+@dataclass
+class zipped_7z(zipped_file_s3):
+    """files compressed using 7-zip technique"""
+    def unzip_and_upload(self):
+        # download 7z-like file to local disk
+        s3 = boto3.resource('s3')
+        s3.download_fileobj(
+            Bucket  = self.src_bucket, 
+            Key = self.src_key
+        )
+        zipname = self.src_key.rsplit('/',1)[-1]
+        # collect all file names
+        with py7zr.SevenZipFile(zipname, 'r') as zip:
+            allfiles = zip.getnames()
+        # extract and upload
+        with py7zr.SevenZipFile(zipname, 'r') as zip:
+            for filename in allfiles:
+                zip.extract(targets=filename)
+                tgt_key = f'{self.tgt_prefix}/{filename}'
+                s3.upload_file(
+                    Filename = filename,
+                    Bucket=self.tgt_bucket,
+                    Key=tgt_key
+                )
+        # return extracted file names
+        return allfiles 
 
-def pyclean():
-    os.popen('find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf')
-
-def bucket_str(bucket_name,str_json)->list:
-    """
-    bucket_name: target bucket where subfolder structure needs to be formed
-    folder_json: json file describing subfolder structure
-    https://stackoverflow.com/questions/1939743/amazon-s3-boto-how-to-create-a-folder
-    """
-    def path_constr(str_dict):
-        key_paths = []
-        def path_constr_dfs(str_dict,key_path,key_paths):
-            key_path+=f'{str_dict["name"]}/'
-            if(str_dict["type"]=="leaf"):
-                key_paths.append(key_path)
-            # recurrsion
-            for child_dict in str_dict["children"]:
-                path_constr_dfs(child_dict,key_path,key_paths)
-        path_constr_dfs(str_dict,'',key_paths)
-        return(key_paths)
-    
-    keypaths = [] 
-    s3 = boto3.client('s3')
-    for rchild in str_json:
-        # dfs to construct path
-        r_keypath = path_constr(rchild)
-        for keypath in r_keypath:
-            # check if the folder key exists
-            # https://github.com/boto/boto3/issues/1361
-            try:
-                s3.head_object(Bucket=bucket_name,Key=keypath)
-                continue
-            except ClientError as e:
-                # boto3 function to create folder object
-                s3.put_object(Bucket=bucket_name,Key=keypath)
-                keypaths.append(keypath)
-    return(keypaths)
-
-def file_to_folder(bucket_name,src_file,tgt_folder,verb=True):
+def copy_file_to_folder(bucket_name,src_file,tgt_folder,tgt_file=None,verb=True):
     """
     bucket_name: s3 bucket needs to be organized
     src_file: source file; 
       - could be either full name of a single file (contains '.'), or 
       - folder name (must end with '/'), or
-      - file name pattern directly under bucket (e.g., .zip)
+      - file name pattern directly under bucket (e.g., zip)
     tgt_folder: target folder;
+    tgt_file: to change file name in target folder. NOTE this is only allowed when copying a single file
     """
     if(src_file.endswith('/')):
         # input is a folder
         file_lst = get_objects(bucket_name,subfolder=src_file[:-1])['']
         file_lst = [f'{src_file}{x}' for x in file_lst]
     elif('.' not in src_file and '/' not in src_file):
-        # input is a file type
+        # input is a file type or name pattern
         file_lst = get_objects(bucket_name)['']
-        file_lst = [x for x in file_lst if f'.{src_file}' in x]
+        file_lst = [x for x in file_lst if src_file in x]
     elif('.' in src_file):
         # input is a single file
         file_lst = []
         file_lst.extend([src_file])
     else:
         exit("src_file should either contain '.' for single file or end with '/' for folder or '*.<file-type>' for file type!")
-    # print(file_lst)
     # s3 bucket copy 
     s3 = boto3.resource('s3')
     for key in file_lst:
@@ -263,7 +208,9 @@ def file_to_folder(bucket_name,src_file,tgt_folder,verb=True):
               'Key': key
         }
         file_key = key.rsplit('/', 1)[-1]
-        tgt_key = f'{tgt_folder}{file_key}'
+        if tgt_file is not None:
+            file_key = tgt_file
+        tgt_key = f'{tgt_folder}/{file_key}'
         s3.meta.client.copy(
             copy_source,
             bucket_name,
@@ -284,18 +231,21 @@ def Download_S3Objects(bucket_name,path_to_src_obj,download_file,s3_client=None,
     if verbose: 
         print(f'file {path_to_src_obj} downloaded!')
 
-# untested!
-def Upload_S3Objects(file_to_save,bucket_name,tgt_key,s3_client=None)->None:
+def Upload_S3Objects(path_to_file,bucket_name,tgt_key,s3_client=None)->None:
+    # initialize s3 client
     if s3_client is None:
         s3_client = boto3.client('s3') # Using the default session
-    # download from memory to disk
-    file_name = tgt_key.split('/',1)[-1]
-    with open(file_name, 'a') as f:
-        #https://stackoverflow.com/questions/30991541/pandas-write-csv-append-vs-write
-        file_to_save.to_csv(f, mode='a', header=f.tell()==0)
     # upload_file from disk to s3
     try:
-        with open(file_name, 'rb') as f:
-            s3_client.upload_fileobj(f, bucket_name, tgt_key)
+        s3_client.upload_file(
+            Filename = path_to_file, 
+            Bucket_name = bucket_name, 
+            Key = tgt_key
+        )
     except ClientError as e:
         logging.error(e)
+
+
+
+def pyclean():
+    os.popen('find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf')
