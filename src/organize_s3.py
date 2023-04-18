@@ -29,6 +29,8 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 #========================================================================================================
 # ihc
 # copy_file_to_folder('gpc-ihc-upload','tokenization_output_intermountain.csv','va-linkage-pilot/source/')
+# copy_file_to_folder('gpc-ihc-upload','va-linkage-pilot/GPC_VA_Datavant.txt','va-linkage-pilot/source','tokenization_output_ihc.txt')
+# copy_file_to_folder('gpc-ihc-upload','va-linkage-pilot/GPC_VA_Datavant.txt','va-linkage-pilot/extract','tokenization_output_ihc.txt')
 #========================================================================================================
 
 #========================================================================================================
@@ -50,7 +52,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 #========================================================================================================
 # uiowa
-
+# copy_file_to_folder('gpc-uiowa-upload','tokenization_output_UI_without_PAT_ID.zip','va-linkage-pilot/source')
 #========================================================================================================
 
 #========================================================================================================
@@ -61,13 +63,13 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 #========================================================================================================
 # uthouston
-# copy_file_to_folder('gpc-uthouston-upload','tokenization_output_UTH.zip','va-linkage-pilot/source/')
+# copy_file_to_folder('gpc-uthouston-upload','tokenization_output_UTH.zip','va-linkage-pilot/source')
 #========================================================================================================
 
 #========================================================================================================
 # uthscsa
-copy_file_to_folder('gpc-uthscsa-upload','tokenzation_output_c4uthscsa.csv','va-linkage-pilot/source/')
-copy_file_to_folder('gpc-uthscsa-upload','tokenzation_output_c4uthscsa.csv','va-linkage-pilot/extract/')
+# copy_file_to_folder('gpc-uthscsa-upload','tokenzation_output_c4uthscsa.csv','va-linkage-pilot/source')
+# copy_file_to_folder('gpc-uthscsa-upload','tokenzation_output_c4uthscsa.csv','va-linkage-pilot/extract')
 #========================================================================================================
 
 #========================================================================================================

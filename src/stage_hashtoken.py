@@ -18,7 +18,7 @@ import gc
 import os
 
 #diagnosic mode
-diagnostic_mode = False
+diagnostic_mode = True
 
 #if skip download
 skip_download = False
@@ -44,7 +44,7 @@ gpc_dict = {
     'kumc':'S03',
     'mcri':'S04',
     'mcw':'S05',
-    # 'uiowa':'S06',
+    'uiowa':'S06',
     'unmc':'S07',
     'uthouston':'S08',
     'uthscsa':'S09',
@@ -108,15 +108,27 @@ for idx, site in enumerate(gpc_dict):
     
     # sites may submit illegal formated files
     delim = '|'
-    if site in ['mu','ihc','uthouston']:
+    if site in ['mu']:
         delim = None 
+    elif site in ['uthouston']:
+        delim = '\t'
+    
+    # some sites doesn't attach the additional PATID
+    names=['PATID','TOKEN_1','TOKEN_2','TOKEN_3','TOKEN_4','TOKEN_5','TOKEN_16','TOKEN_ENCRYPTION_KEY']
+    if site in ['uiowa']:
+        names=['TOKEN_1','TOKEN_2','TOKEN_3','TOKEN_4','TOKEN_5','TOKEN_16','TOKEN_ENCRYPTION_KEY']
     df = pd.read_csv(
         src_file,
         delimiter = delim,
-        names=['PATID','TOKEN_1','TOKEN_2','TOKEN_3','TOKEN_4','TOKEN_5','TOKEN_16','TOKEN_ENCRYPTION_KEY'],
+        names=names,
         header = None,
         skiprows = 1
     )
+    # assign random row numbers
+    if 'PATID' not in names:
+        df['PATID'] = df.reset_index().index
+        names = ['PATID'] + names
+        df = df[names]
     
     #=====================================================
     if diagnostic_mode: print(df.head()); print(df.columns)
