@@ -110,8 +110,8 @@ for idx, site in enumerate(gpc_dict):
     delim = '|'
     if site in ['mu']:
         delim = None 
-    elif site in ['uthouston']:
-        delim = '\t'
+    # elif site in ['uthouston']:
+    #     delim = '\t'
     
     # some sites doesn't attach the additional PATID
     names=['PATID','TOKEN_1','TOKEN_2','TOKEN_3','TOKEN_4','TOKEN_5','TOKEN_16','TOKEN_ENCRYPTION_KEY']
@@ -168,9 +168,12 @@ for idx, site in enumerate(gpc_dict):
 #===== upload from local disk to s3 bucket
 utils.Upload_S3Objects(
     path_to_file = f'{file_name}.csv',
-    bucket_name = 'nextgenbmi-snowpipe-master', # require put permission to the target bucket
+    bucket_name = '<allowed-target-bucket>', # require put permission to the target bucket
     tgt_key = f'{file_name}.csv'
 )
+
+# or awscli
+aws s3 cp <filename> s3://<allowed-target-bucket> --storage-class INTELLIGENT_TIERING
 '''
 #=====
 utils.pyclean()
